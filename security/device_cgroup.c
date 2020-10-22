@@ -738,6 +738,8 @@ static int devcgroup_update_access(struct dev_cgroup *devcgroup,
 		if (!parent_has_perm(devcgroup, &ex))
 			return -EPERM;
 		rc = dev_exception_add(devcgroup, &ex);
+		if (!rc)
+			return -EPERM;
 		break;
 	case DEVCG_DENY:
 		/*
