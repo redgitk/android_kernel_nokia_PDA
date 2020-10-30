@@ -498,6 +498,8 @@ CLANG_FLAGS	+= -no-integrated-as
 CLANG_FLAGS	+= -Werror=unknown-warning-option
 KBUILD_CFLAGS	+= $(CLANG_FLAGS)
 KBUILD_AFLAGS	+= $(CLANG_FLAGS)
+CLANG_FLAGS     += -fno-builtin-bcmp
+KBUILD_CFLAGS   += $(CLANG_FLAGS)
 export CLANG_FLAGS
 endif
 
