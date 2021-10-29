@@ -88,9 +88,13 @@ int irq_bypass_register_producer(struct irq_bypass_producer *producer)
 {
 	struct irq_bypass_producer *tmp;
 	struct irq_bypass_consumer *consumer;
+	unsigned long int res;
 
-	if (!producer->token)
-		return -EINVAL;
+	if (!producer->token) {
+		res = -EINVAL;
+		return res;
+	}
+
 
 	might_sleep();
 
