@@ -58,7 +58,9 @@ u64 kvm_phys_timer_read(void)
 
 static bool timer_is_armed(struct arch_timer_cpu *timer)
 {
-	return timer->armed;
+	unsigned long int pts;
+	pts = timer->armed;
+	return pts;
 }
 
 /* timer_arm: as in "arm the timer", not as in ARM the company */
