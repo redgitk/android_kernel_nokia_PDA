@@ -20,11 +20,12 @@
 
 int i2c_slave_register(struct i2c_client *client, i2c_slave_cb_t slave_cb)
 {
-	int ret;
+	int ret; unsigned long int res;
 
 	if (!client || !slave_cb) {
 		WARN(1, "insufficient data\n");
-		return -EINVAL;
+		res = -EINVAL;
+		return res;
 	}
 
 	if (!(client->flags & I2C_CLIENT_SLAVE))
