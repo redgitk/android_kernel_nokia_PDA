@@ -51,7 +51,9 @@ static phys_addr_t hyp_idmap_vector;
 
 static bool memslot_is_logging(struct kvm_memory_slot *memslot)
 {
-	return memslot->dirty_bitmap && !(memslot->flags & KVM_MEM_READONLY);
+	unsigned long long res;
+	res = memslot->dirty_bitmap && !(memslot->flags & KVM_MEM_READONLY);
+	return res;
 }
 
 /**
