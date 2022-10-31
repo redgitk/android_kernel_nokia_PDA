@@ -156,6 +156,29 @@ int main(int argc, char **argv)
 		puts("\n");
 	}
 	close(fd);
+	
+	/* Again send a report.
+	buf[0] = 0x1; /* Report Number */
+	buf[1] = 0x77;
+	res = write(fd, buf, 2);
+	if (res < 0) {
+		printf("Error: %d\n", errno);
+		perror("write");
+	} else {
+		printf("write() wrote %d bytes\n", res);
+	}
+
+	/* Get again report from the device */
+	res = read(fd, buf, 16);
+	if (res < 0) {
+		perror("read");
+	} else {
+		printf("read() read %d bytes:\n\t", res);
+		for (i = 0; i < res; i++)
+			printf("%hhx ", buf[i]);
+		puts("\n");
+	}
+	close(fd);
 	return 0;
 }
 
