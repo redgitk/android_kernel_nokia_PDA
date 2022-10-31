@@ -6,10 +6,18 @@
 #include <linux/init.h>
 #include <linux/module.h>
 
+/*
 static int __init load_fun(void)
 {
 	pr_debug("Hello, World  kernel :) \n");
 	return 0;
+}
+*/
+
+ __initfunction(int init_module(void))
+{
+   printk(KERN_ALERT "Hi there.\n");
+   return 0;
 }
 
 static void __exit unload_fun(void)
